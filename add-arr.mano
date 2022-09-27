@@ -1,0 +1,102 @@
+    LDA SPT
+    BSA PST
+    CLA
+LOP,ADD APT I
+    ISZ APT
+    ISZ ACT
+    BUN LOP
+    BSA PHX
+    HLT
+
+ARR,DEC 1
+    DEC 2
+    DEC 3
+    DEC 4
+    DEC 5
+    DEC 6
+ACT,DEC -6
+APT,HEX ARR
+SUM,HEX 0
+
+STR,DEC 83
+    DEC 117
+    DEC 109
+    DEC 32
+    DEC 111
+    DEC 102
+    DEC 32
+    DEC 97
+    DEC 114
+    DEC 114
+    DEC 97
+    DEC 121
+    DEC 32
+    DEC 105
+    DEC 115
+    DEC 32
+    DEC 48
+    DEC 120
+    DEC 0
+SPT,HEX STR
+
+// print hex string
+// prints the hex number in AC
+PHX,HEX 0
+    STA HTP
+HLP,LDA HTP         // loop
+    CIL
+    CIL
+    CIL
+    CIL
+    STA HTP
+    AND HBM
+    ADD HSB
+    SNA             // skip if not an alphabet
+    ADD HOA
+    ADD HAD
+    ADD HOF
+    STA HPT I
+    ISZ HPT
+    ISZ HCT
+    BUN HLP
+    LDA HPP
+    BSA PST
+    // reset state for next call
+    LDA HCO
+    STA HCT
+    LDA HPO
+    STA HPT
+    BUN PHX I
+HTP,HEX 0           // temporary memory
+HBB,HEX 0           // hex byte 0
+    HEX 0           // hex byte 1
+    HEX 0           // hex byte 2
+    HEX 0           // hex byte 3
+    HEX 0           // hex null terminator
+HBM,HEX 000f        // bit mask for 1 nibble
+HOF,HEX 30          // offset to get '0'
+HOA,HEX 27          // offset to get 'A'
+HPP,HEX HBB         // pointer to first letter
+HCT,DEC -4          // counter
+HCO, DEC -4         // counter original
+HPT,HEX HBB         // temporary pointer
+HPO,HEX HBB         // temp pointer original
+HSB,DEC -10         // subtract
+HAD,DEC 10          // add
+// print hex string end
+
+// print string 
+// prints a null terminated string in AC
+PST,HEX 0
+    STA PTR
+PSL,LDA PTR I
+    SZA
+    BUN SNZ
+    BUN PST I
+SNZ,OUT
+    ISZ PTR    
+    BUN PSL
+PTR,HEX 0
+// print string end
+
+    END
