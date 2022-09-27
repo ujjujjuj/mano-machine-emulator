@@ -1,0 +1,39 @@
+    LDA PTR
+    BSA PST   
+LOP,INP
+    OUT
+    BUN LOP
+
+// print string 
+// prints a null terminated string in AC
+PST,HEX 0
+    STA PTR
+PSL,LDA PTR I
+    SZA
+    BUN SNZ
+    BUN PST I
+SNZ,OUT
+    ISZ PTR    
+    BUN PSL
+PTR,HEX 0
+// print string end
+
+STR,DEC 84
+    DEC 121
+    DEC 112
+    DEC 101
+    DEC 32
+    DEC 115
+    DEC 111
+    DEC 109
+    DEC 101
+    DEC 116
+    DEC 104
+    DEC 105
+    DEC 110
+    DEC 103
+    DEC 13
+    DEC 0
+PTR,HEX STR
+
+    END

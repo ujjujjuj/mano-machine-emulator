@@ -1,0 +1,85 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    font-size: 10px;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: black;
+    color: white;
+    font-size: 1.6rem;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem 0;
+    gap: 4rem;
+}
+.container > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 3rem;
+    gap: 6rem;
+}
+.screen {
+    background-color: #101010;
+    font-family: monospace;
+    width: 20rem;
+    height: 10rem;
+    padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    outline: 1px solid #ffffff40;
+}
+
+.inputDiv {
+    display: flex;
+    gap: 5rem;
+}
+textarea {
+    resize: none;
+    padding: 1rem;
+}
+
+.inputDiv > div {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.inputDiv button {
+    outline: none;
+    border: none;
+    background-color: white;
+    padding: 1rem 1rem;
+}
+.mobile {
+    display: none;
+}
+
+@media only screen and (max-width: 800px) {
+    .container {
+        display: none;
+    }
+    .mobile {
+        display: block;
+        font-family: monospace;
+        text-align: center;
+        padding: 2rem;
+    }
+}

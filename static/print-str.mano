@@ -1,0 +1,34 @@
+    LDA STP
+    BSA PST
+    HLT
+
+// print string 
+// prints a null terminated string in AC
+PST,HEX 0
+    STA PTR
+PSL,LDA PTR I
+    SZA
+    BUN SNZ
+    BUN PST I
+SNZ,OUT
+    ISZ PTR    
+    BUN PSL
+PTR,HEX 0
+// print string end
+
+STR,HEX 48 // H
+    HEX 65 // e
+    HEX 6c // l
+    HEX 6c // l
+    HEX 6f // o
+    HEX 2c // ,
+    HEX 57 // W
+    HEX 6f // o
+    HEX 72 // r
+    HEX 6c // l
+    HEX 64 // d
+    HEX 21 // !
+    HEX 0
+STP,HEX STR
+
+    END
