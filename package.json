@@ -5,7 +5,9 @@
   "source": "src/index.html",
   "scripts":{
     "dev":"parcel",
-    "build":"parcel build"
+    "build:parcel": "parcel build ./src/index.html --public-url ./ --no-source-maps",
+    "build": "npm run clean && npm run build:parcel",
+    "clean": "rm -rf dist/*"
   },
   "dependencies": {},
   "devDependencies": {
